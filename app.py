@@ -3,13 +3,9 @@ import matplotlib.pyplot as plt
 from sqlalchemy import create_engine
 
 engine = create_engine("mysql+mysqlconnector://root:Saffronblood%40123@localhost/companydb2")
-
 df = pd.read_sql("SELECT * FROM employees;", engine)
-
 avg_salary_dept = df.groupby('department')['salary'].mean().sort_values()
-
 count_dept = df['department'].value_counts()
-
 top_performers = df.sort_values('performance_score', ascending=False).head(5)
 
 # Bar chart: Average salary per department
